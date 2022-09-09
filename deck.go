@@ -1,5 +1,7 @@
 package main
 
+import "strings"
+
 // Create a new type of 'deck'
 // which is a slice of strings
 type deck []string
@@ -25,4 +27,14 @@ func (d deck) print() {
 	for i, card := range d {
 		println(i, card)
 	}
+}
+
+// receiver deal function
+func deal(d deck, handSize int) (deck, deck) {
+	return d[:handSize], d[handSize:]
+}
+
+// receiver toString function
+func (d deck) toString() string {
+	return strings.Join([]string(d), ",")
 }
